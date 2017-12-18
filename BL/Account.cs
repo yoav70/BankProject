@@ -17,7 +17,7 @@ namespace Bank.BL{
         private string m_FullName;
         private int m_Password;
         private string m_Path;
-
+        
         
         public int CitizenID { get => m_CitizenID; set => m_CitizenID = value; }
         public int PhoneNumber { get => m_PhoneNumber; set => m_PhoneNumber = value; }
