@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{1A529A0E-F6FE-4990-8DB5-DA27117A650D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDALBL", "TestDALBL\TestDALBL.csproj", "{2CE6979F-0693-46A3-A372-A5B7D9C2B3B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A529A0E-F6FE-4990-8DB5-DA27117A650D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A529A0E-F6FE-4990-8DB5-DA27117A650D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A529A0E-F6FE-4990-8DB5-DA27117A650D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A529A0E-F6FE-4990-8DB5-DA27117A650D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CE6979F-0693-46A3-A372-A5B7D9C2B3B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CE6979F-0693-46A3-A372-A5B7D9C2B3B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CE6979F-0693-46A3-A372-A5B7D9C2B3B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CE6979F-0693-46A3-A372-A5B7D9C2B3B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1CEDFFB8-F541-4CF2-84A2-7DC3036D3A98}
+	EndGlobalSection
+EndGlobal
