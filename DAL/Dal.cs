@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.OleDb;
+using System.IO;
 using System.Text;
 
 namespace Bank.DAL {
@@ -9,24 +10,24 @@ namespace Bank.DAL {
     /// </summary>
     public class Dal {
 
-        public static DataTable GetCustomDataTable(string tableName, string path, string sql) {
+        public static DataTable GetCustomDataTable(string tableName, string sql) {
             DataSet dataSet = new DataSet();
-            FillDataSet(dataSet, path, tableName, sql);
+            FillDataSetCustom(dataSet, tableName, sql);
             return dataSet.Tables[tableName];
         }
 
-        public static DataTable GetDataTable(string tableName, string path, string orderBy) {
+        public static DataTable GetDataTable(string tableName, string orderBy) {
             DataSet dataSet = new DataSet();
-            FillDataSet(path, dataSet, tableName, orderBy);
+            FillDataSet(dataSet, tableName, orderBy);
             return dataSet.Tables[tableName];
         }
 
-        public static DataTable GetDataTable(string tableName, string path) => GetDataTable(tableName, path, "");
+        public static DataTable GetDataTable(string tableName) => GetDataTable(tableName, "");
 
         
-        public static bool ExecuteSql(string sql, string path) {
+        public static bool ExecuteSql(string sql) {
             OleDbConnection connection = new OleDbConnection {
-                ConnectionString = GetConnectionString(path)
+                ConnectionString = GetConnectionString()
             };
 
             OleDbCommand command = new OleDbCommand {
@@ -62,17 +63,17 @@ namespace Bank.DAL {
         }
 
 
-        public static void FillDataSet(string path, DataSet dataSet, string tableName, string orderBy) {
+        public static void FillDataSet(DataSet dataSet, string tableName, string orderBy) {
             if (orderBy != "")
-                FillDataSet(path, dataSet, tableName,  "SELECT * FROM " + tableName + " ORDER BY " + orderBy);
+                FillDataSet(dataSet, tableName,  "SELECT * FROM " + tableName + " ORDER BY " + orderBy);
             else
-                FillDataSet(path, dataSet, tableName, "SELECT * FROM " + tableName);
+                FillDataSet(dataSet, tableName, "SELECT * FROM " + tableName);
         }
 
-        public static void FillDataSet(DataSet dataSet, string path,  string tableName,  string sql) {
+        public static void FillDataSetCustom(DataSet dataSet, string tableName, string sql) {
             
             OleDbConnection connection = new OleDbConnection();
-            connection.ConnectionString = GetConnectionString(path);
+            connection.ConnectionString = GetConnectionString();
 
             OleDbCommand command = new OleDbCommand();
             command.Connection = connection;
@@ -85,18 +86,19 @@ namespace Bank.DAL {
         }
 
         
-        private static string GetConnectionString(string path) {
+        private static string GetConnectionString() {
             string connectionString;
 
             connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;"; 
-            connectionString += "Data Source=" + "'" + GetDbLocation(path) + "'" + ";";
+            connectionString += "Data Source=" + "'" + GetDbLocation() + "'" + ";";
             connectionString += "Persist Security Info=True";
 
             return connectionString;
         }
 
-        private static string GetDbLocation(string path) {
+        private static string GetDbLocation() {
             // Get Access DB dir
+            string path = Directory.GetCurrentDirectory();
             path = path.Replace(@"bin\Debug", "");
             path = path.Replace(@"bin\Release", "");
 

@@ -42,6 +42,9 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="Asset.cs" />
+    <Compile Include="AssetList.cs" />
+    <Compile Include="Operation.cs" />
+    <Compile Include="OperationList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
